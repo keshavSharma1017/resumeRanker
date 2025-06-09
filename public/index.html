@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResumeRanker - AI-Powered Resume Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>ResumeRanker</h1>
+            <p>AI-Powered Resume Analysis & Ranking System</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Upload Section -->
+            <div class="card upload-section">
+                <h2>Upload Files for Analysis</h2>
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="jobDescription">Job Description</label>
+                        <input type="file" id="jobDescription" name="jobDescription" accept=".txt,.pdf,.doc,.docx" required>
+                        <small>Upload the job description (TXT, PDF, DOC, DOCX)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="resumes">Resume Files</label>
+                        <input type="file" id="resumes" name="resumes" accept=".txt,.pdf,.doc,.docx" multiple required>
+                        <small>Select multiple resume files (up to 10 files, max 5MB each)</small>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" id="uploadBtn">
+                        <span class="btn-text">Analyze Resumes</span>
+                        <span class="btn-loading" style="display: none;">Analyzing...</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Results Section -->
+            <div class="card results-section" id="resultsSection" style="display: none;">
+                <div class="results-header">
+                    <h2>Analysis Results</h2>
+                    <button class="btn btn-secondary" id="downloadReportBtn">Download PDF Report</button>
+                </div>
+                
+                <div class="summary-stats" id="summaryStats"></div>
+                
+                <div class="job-keywords" id="jobKeywords"></div>
+                
+                <div class="resume-rankings" id="resumeRankings"></div>
+            </div>
+
+            <!-- History Section -->
+            <div class="card history-section">
+                <h2>Analysis History</h2>
+                <div id="historyList">
+                    <p class="empty-state">No previous analyses found</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="errorModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Error</h3>
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
